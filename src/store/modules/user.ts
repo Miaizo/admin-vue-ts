@@ -3,7 +3,8 @@ import { defineStore } from "pinia"
 export const useTodoStore = defineStore({
   id: 'todo',
   state: () => ({
-    count: 0
+    count: 0,
+    token: 123
   }),
   getters: {
     getCount():number {
