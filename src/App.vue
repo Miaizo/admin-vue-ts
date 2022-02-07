@@ -12,5 +12,9 @@ export default defineComponent({
   }
 })
 </script>
-<style scoped>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
 </style>

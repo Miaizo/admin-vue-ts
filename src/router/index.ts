@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from "../views/home.vue";
+import { useLayoutStore } from '@/store/modules/layout'
 
 const routes = [
   {
@@ -40,6 +41,20 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const { getStatus } = useLayoutStore()
+  // 判断是否登录
+  if (!getStatus.ACCESS_TOKEN && to.path !== '/login') {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+router.afterEach(() => {
+
 })
 
 export default router
