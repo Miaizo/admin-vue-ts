@@ -1,4 +1,4 @@
-# Vue 3 + Typescript + Vite + vue-router + pinia + element-plus
+# Vue 3 + Typescript + Vite + vue-router + pinia(替代vuex) + element-plus
 
 ### 
 ```
@@ -8,4 +8,8 @@ yarn dev
 
 yarn build
 ```
+
+###
+
+
 

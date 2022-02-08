@@ -16,7 +16,7 @@
     "@typescript-eslint/parser": "^5.10.1",
     "@vitejs/plugin-vue": "^2.0.0",
     "axios": "^0.25.0",
-    "element-plus": "^1.3.0-beta.9",
+    "element-plus": "^2.0.1",
     "eslint": "^8.7.0",
     "eslint-plugin-vue": "^8.4.0",
     "pinia": "^2.0.0-rc.10",
