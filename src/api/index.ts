@@ -10,10 +10,10 @@ export interface loginParam {
   password: string
 }
 
-export function login(param: loginParam):Promise<AxiosResponse<IResponse<string>>> {
+export function login(param: loginParam): Promise<AxiosResponse<IResponse<string>>> {
   return request({
-      url: api.login,
-      method: 'post',
-      data: param
+    url: api.login,
+    method: 'post',
+    data: param
   })
 }

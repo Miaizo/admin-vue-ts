@@ -10,13 +10,24 @@
         :rules="rules"
       >
         <el-form-item class="input-name" prop="name">
-          <el-input v-model="form.name" placeholder="请输入用户名" :prefix-icon="User" />
+          <el-input
+            v-model="form.name"
+            placeholder="请输入用户名"
+            :prefix-icon="User"
+          />
         </el-form-item>
         <el-form-item class="input-name" prop="pwd">
-          <el-input v-model="form.pwd" placeholder="请输入密码" :prefix-icon="Lock" show-password />
+          <el-input
+            v-model="form.pwd"
+            placeholder="请输入密码"
+            :prefix-icon="Lock"
+            show-password
+          />
         </el-form-item>
         <el-form-item class="input-name">
-          <el-button type="primary" class="w-full" @click="onSubmit">登录</el-button>
+          <el-button type="primary" class="w-full" @click="onSubmit"
+            >登录</el-button
+          >
         </el-form-item>
 
         <div class="flex justify-between">
@@ -31,7 +42,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
 import { ElNotification } from 'element-plus'
 import { User, Lock } from '@element-plus/icons-vue'
@@ -43,7 +54,7 @@ export default defineComponent({
     const { login } = useLayoutStore()
     const form = reactive({
       name: 'admin',
-      pwd: 'admin'
+      pwd: 'admin',
     })
     const ruleForm = ref(null)
     const enterSubmit = (e: KeyboardEvent) => {
@@ -53,35 +64,45 @@ export default defineComponent({
     }
     const onSubmit = async () => {
       let { name, pwd } = form
-      if (!await validate(ruleForm)) return
+      if (!(await validate(ruleForm))) return
       await login({ username: name, password: pwd })
       ElNotification({
         title: '欢迎',
         message: '欢迎回来',
-        type: 'success'
+        type: 'success',
       })
     }
     const rules = reactive({
       name: [
         {
-          validator: (rule: any, value: any, callback: (arg0?: Error | undefined) => void) => {
+          validator: (
+            rule: any,
+            value: any,
+            callback: (arg0?: Error | undefined) => void
+          ) => {
             if (!value) {
               return callback(new Error('用户名不能为空'))
             }
             callback()
-          }, trigger: 'blur'
-        }
+          },
+          trigger: 'blur',
+        },
       ],
       pwd: [
         {
-          validator: (rule: any, value: any, callback: (arg0?: Error | undefined) => void) => {
+          validator: (
+            rule: any,
+            value: any,
+            callback: (arg0?: Error | undefined) => void
+          ) => {
             if (!value) {
               return callback(new Error('密码不能为空'))
             }
             callback()
-          }, trigger: 'blur'
-        }
-      ]
+          },
+          trigger: 'blur',
+        },
+      ],
     })
     return {
       User,
@@ -90,9 +111,9 @@ export default defineComponent({
       rules,
       ruleForm,
       enterSubmit,
-      onSubmit
+      onSubmit,
     }
-  }
+  },
 })
 </script>
 <style scoped>

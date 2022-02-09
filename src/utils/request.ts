@@ -3,7 +3,7 @@ import axios from 'axios'
 import { AxiosResponse, AxiosRequestConfig } from 'axios'
 import { ElLoading, ElNotification } from 'element-plus'
 
-let loading:{close():void}
+let loading: { close(): void }
 // 创建 axios 实例
 const request = axios.create({
     // API 请求的默认前缀
@@ -12,7 +12,7 @@ const request = axios.create({
 })
 
 // 异常拦截处理器
-const errorHandler = (error:{message:string}) => {
+const errorHandler = (error: { message: string }) => {
     loading.close()
     console.log(`err${error}`)
     ElNotification({
@@ -24,7 +24,7 @@ const errorHandler = (error:{message:string}) => {
 }
 
 // request interceptor
-request.interceptors.request.use((config:AxiosRequestConfig) => {
+request.interceptors.request.use((config: AxiosRequestConfig) => {
     const { getStatus } = useLayoutStore()
     loading = ElLoading.service({
         lock: true,
@@ -42,13 +42,13 @@ request.interceptors.request.use((config:AxiosRequestConfig) => {
 }, errorHandler)
 
 // response interceptor
-request.interceptors.response.use((response:AxiosResponse<IResponse>) => {
+request.interceptors.response.use((response: AxiosResponse<IResponse>) => {
     const { data } = response
     const { getStatus, logout } = useLayoutStore()
     loading.close()
-    if(data.Code !== 200) {
+    if (data.Code !== 200) {
         let title = '请求失败'
-        if(data.Code === 401) {
+        if (data.Code === 401) {
             if (getStatus.ACCESS_TOKEN) {
                 logout()
             }

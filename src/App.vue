@@ -2,19 +2,16 @@
   <router-view />
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'App',
   setup() {
-    return {
-    }
-  }
+    return {}
+  },
 })
 </script>
+
 <style>
-body {
-  margin: 0;
-  padding: 0;
-}
+@import './assets/css/index.css';
 </style>

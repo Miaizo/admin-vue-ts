@@ -17,7 +17,31 @@ const routes = [
         meta: {
           title: '系统首页'
         },
-        component: () => import( /* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+        component: () => import( /* webpackChunkName: "dashboard" */ "@/views/Dashboard.vue")
+      },
+      {
+        path: '/user',
+        name: 'user',
+        meta: {
+          title: '用户'
+        },
+        component: () => import(/* webpackChunkName: "404" */ '@/views/User.vue')
+      },
+      {
+        path: '/news',
+        name: 'news',
+        meta: {
+          title: '用户'
+        },
+        component: () => import(/* webpackChunkName: "404" */ '@/views/News.vue')
+      },
+      {
+        path: '/settings',
+        name: 'settings',
+        meta: {
+          title: '设置'
+        },
+        component: () => import(/* webpackChunkName: "404" */ '@/views/Settings.vue')
       },
       {
         path: '/404',
@@ -25,7 +49,15 @@ const routes = [
         meta: {
           title: '找不到页面'
         },
-        component: () => import(/* webpackChunkName: "404" */ '../views/404.vue')
+        component: () => import(/* webpackChunkName: "404" */ '@/views/404.vue')
+      },
+      {
+        path: '/403',
+        name: '403',
+        meta: {
+          title: '没有权限'
+        },
+        component: () => import(/* webpackChunkName: "404" */ '@/views/403.vue')
       },
     ]
   }, {
@@ -34,7 +66,7 @@ const routes = [
     meta: {
       title: '登录'
     },
-    component: () => import( /* webpackChunkName: "login" */ "../views/Login.vue")
+    component: () => import( /* webpackChunkName: "login" */ "@/views/Login.vue")
   }
 ];
 

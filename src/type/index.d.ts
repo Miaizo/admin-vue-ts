@@ -1,4 +1,4 @@
-export {}
+export { }
 declare global {
     interface IResponse<T = any> {
         Code: number;

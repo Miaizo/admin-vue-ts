@@ -2,8 +2,11 @@
   <div class="header">
     <!-- 折叠按钮 -->
     <div class="collapse-btn" @click="collapseChage">
-      <el-icon>
+      <el-icon v-if="!collapse">
         <fold />
+      </el-icon>
+      <el-icon v-else>
+        <expand />
       </el-icon>
     </div>
     <div class="logo">后台管理系统</div>
@@ -16,7 +19,7 @@
             :content="message ? `有${message}条未读消息` : `消息中心`"
             placement="bottom"
           >
-            <router-link to="/tabs">
+            <router-link to="/news">
               <el-icon color="#fff">
                 <bell />
               </el-icon>
@@ -32,7 +35,7 @@
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
             {{ user }}
-            <i class="el-icon-caret-bottom"></i>
+            <el-icon style="vertical-align: bottom"><caret-bottom /></el-icon>
           </span>
           <template #dropdown>
             <el-dropdown-menu>
@@ -52,7 +55,7 @@
 import { computed, onMounted } from 'vue'
 import { useLayoutStore } from '@/store/modules/layout'
 import { useRouter } from 'vue-router'
-import { Fold, Bell } from '@element-plus/icons-vue'
+import { Fold, Bell, Expand, CaretBottom } from '@element-plus/icons-vue'
 import { getLocal } from '@/utils/tools'
 
 const { user } = getLocal('user_name')

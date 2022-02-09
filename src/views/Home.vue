@@ -4,7 +4,13 @@
     <v-sidebar></v-sidebar>
     <div class="content-box" :class="{ 'content-collapse': collapse }">
       <div class="content">
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+          <transition name="move" mode="out-in">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </transition>
+        </router-view>
       </div>
     </div>
   </div>
@@ -25,7 +31,7 @@ export default defineComponent({
     const { tags } = useLayoutStore()
     const collapse = computed(() => tags.collapse)
     return {
-      collapse
+      collapse,
     }
   },
 })
